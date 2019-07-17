@@ -22,7 +22,7 @@ $result=mysqli_query($con,$sql);
 $Row = mysqli_fetch_array($result);
 
 while ($row =  $result->fetch_array()) {
-    print_r $row['ITEM_TITLE']."<br>";
+    print_r($row['ITEM_TITLE'])."<br>";
     echo $row['ITEM_AMOUNT']."<br>";
     echo $row['ITEM_DESC']."<br>";
     echo $row['IMAGE_ONE']."<br>";
