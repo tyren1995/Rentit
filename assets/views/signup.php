@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12" style="max-width: 50%; margin: 0 auto;">
             <form id="registrationForm" class="text-center border border-light p-5 mt-5" action="#!">
-
+                <input type="hidden" name="action" value="register" />
                 <p class="h4 mb-4">Sign up</p>
 
                 <div class="form-row mb-4">
@@ -41,7 +41,7 @@
 
                 <!-- Sign up button -->
                 <button class="btn btn-info my-4 btn-block" id="registerButton" type="button">Sign in</button>
-                <div class="alert alert-danger" id="registerResponseContainer" role="alert">
+                <div class="alert alert-danger ResponseContainer" role="alert">
                     <span id="registerResponse"></span>
                 </div>
                 <!-- Social register -->

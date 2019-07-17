@@ -1,7 +1,12 @@
-<?php 
+<?php
 // Siteway Vars
 $siteName = "Rentit";
-$views = dirname(__FILE__)."/assets/views/";
+$views = dirname(__FILE__) . "/assets/views/";
+session_start();
+$loggedIn = false;
+if (isset($_SESSION['email'])) {
+    $loggedIn = true;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,9 +47,19 @@ $views = dirname(__FILE__)."/assets/views/";
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
                 </li>
+                <?php if ($loggedIn === false) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" id="login" href="#">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup.php">Sign Up</a>
+                    </li>
+                <?php } ?>
+                <?php if ($loggedIn === true) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/signup.php">Sign Up</a>
+                    <a class="nav-link" id="logout" href="#">Logout</a>
                 </li>
+                <?php } ?>
             </ul>
             <!-- Links -->
 
