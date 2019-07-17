@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $("#registerResponseContainer").hide();
   $("#registerButton").click(function() {
     // using serialize function of jQuery to get all values of form
     var serializedData = $("#registrationForm").serialize();
@@ -16,7 +17,12 @@ $(document).ready(function() {
     request.done(function(jqXHR, textStatus, response) {
       // you will get response from your php page (what you echo or print)
       // show successfully for submit message
-      $("#result").html(response);
+      var response = $.parseJSON(response.responseText);
+      if(response.results){
+        var results = response.results;
+        $("#registerResponseContainer").show();
+        $("#registerResponse").html(results);
+      }
     });
 
     // Callback handler that will be called on failure

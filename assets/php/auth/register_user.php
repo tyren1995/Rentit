@@ -10,7 +10,7 @@ $phoneNumber = trim($_POST['phoneNumber']);
 
 $returnArr = array();
 
-if (isset($firstName) && isset($lastName)) {
+if (isset($firstName) && strlen($firstName) > 1 && isset($lastName) && strlen($lastName) > 1) {
     // Lets verify the email is not in use
     $sql = $pdo->prepare("SELECT * FROM users");
     $sql->execute();
@@ -26,7 +26,7 @@ if (isset($firstName) && isset($lastName)) {
     }
     // If user exist send response.
     if($userExist === True){
-        $returnArr['results'] = "Email in use."; 
+        $returnArr['results'] = "Email already registered."; 
     }
     // Else continue
     if($userExist === False) {
@@ -37,17 +37,20 @@ if (isset($firstName) && isset($lastName)) {
             'password' => $password,
             'phone_number' => $phoneNumber
         ];
-
+        // We've made it! Lets create our user.
         $sql = "INSERT INTO users (first_name, last_name, email, password, phone_number) VALUES
                 (:first_name, :last_name, :email, :password, :phone_number)";
         $stmt = $pdo->prepare($sql);
         if($stmt->execute($data) === TRUE){
-            $returnArr['data'] = "Success";
+            // Our user has been created!
+            $returnArr['success'] = "Success";
         } else {
-            $returnArr['data'] = "Failed";
+            // Uh oh.. something happened. Let's not return the error here, just incase it happens in production.
+            $returnArr['results'] = "Unable to register at this time, please contact us for further details.";
         }
     }
 } else {
-    $returnArr['name'] = "Name not set.";
+    // Our user didn't give us a name. Oof.
+    $returnArr['results'] = "You must enter your first and last name.";
 }
-echo $returnArr;
+echo json_encode($returnArr);

@@ -41,7 +41,9 @@
 
                 <!-- Sign up button -->
                 <button class="btn btn-info my-4 btn-block" id="registerButton" type="button">Sign in</button>
-
+                <div class="alert alert-danger" id="registerResponseContainer" role="alert">
+                    <span id="registerResponse"></span>
+                </div>
                 <!-- Social register -->
                 <p>or sign up with:</p>
 
