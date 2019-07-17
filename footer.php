@@ -2,6 +2,7 @@
 <script type="text/javascript" src="/assets/js/popper.min.js"></script>
 <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/assets/js/mdb.min.js"></script>
+<script type="text/javascript" src="/assets/js/auth/auth.js"></script>
 </body>
 
 </html>
